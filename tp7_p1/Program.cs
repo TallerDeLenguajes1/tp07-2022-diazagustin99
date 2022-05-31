@@ -84,12 +84,21 @@ void crearTareas(List<Tarea> Lista)
     }
 }
 
-Tarea BuscarTarea(List<Tarea>Lista, String Buscado){
-    int bandera;
+void BuscarTarea(List<Tarea>Lista, String Buscado){
+int bandera=0;
+System.Console.WriteLine("Las siguiente tareas contienen o usan la misma descripcion: ");
 foreach (var item in Lista)
 {
-    bandera=item.Descripcion1.CompareTo(Buscado);
+    item.Descripcion1.CompareTo(Buscado);
+    if (item.Descripcion1.CompareTo(Buscado)==0 || item.Descripcion1.Contains(Buscado))
+    {
+        item.MostrarTarea();
+        bandera=1;
+    }
+}
+if (bandera==0)
+{
+    System.Console.WriteLine("No se encontro ninguna tarea que tenga o contenga esta descripcion.");
 }
 
-    return
 }
